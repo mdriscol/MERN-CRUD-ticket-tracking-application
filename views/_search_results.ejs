@@ -1,0 +1,81 @@
+<!-- include header -->
+<%- include('include/_header') %>
+    <div class="container">
+
+        <div class="center-text">Search Results for "<%= term %>"</div>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Status</th>
+                    <th>Open Date</th>
+                    <th>Priority</th>
+                    <th>Subject</th>
+                    <th>Issue Type</th>
+                    <th>Submitter</th>
+                    <!-- <th>Actions</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <% searchResults.forEach(result=> { %>
+                    <tr>
+                        <td>
+                            <%= result.status %>
+                        </td>
+                        <td>
+                            <%= result.openDate.toLocaleDateString() %>
+                        </td>
+                        <td>
+                            <%= result.priority %>
+                        </td>
+                        <td><a href="/update-request?id=<%= result._id %>" data-subject="<%= result.subject %>">
+                                <%= result.subject %>
+                            </a></td>
+                        <td>
+                            <%= result.issueType %>
+                        </td>
+                        <td>
+                            <%= result.submitter %>
+                        </td>
+                        <!-- <td>
+                        <a class="btn border-shadow delete" data-id="<%= result._id %>">
+                            <span class="text-gradient"><i class="fa fa-times"></i></span>
+                        </a>
+                    </td> -->
+                    </tr>
+                    <% }); %>
+            </tbody>
+        </table>
+    </div>
+    <!-- Pagination Controls -->
+    <div class="pagination">
+        <% if (currentPage> 1) { %>
+            <a href="/search?term=<%= term %>&page=1" class="page-link">First</a>
+            <a href="/search?term=<%= term %>&page=<%= currentPage - 1 %>" class="page-link">Previous</a>
+            <% } %>
+
+                <% for (let i=1; i <=totalPages; i++) { %>
+                    <a href="/search?term=<%= term %>&page=<%= i %>"
+                        class="page-link<%= currentPage === i ? ' active' : '' %>">
+                        <%= i %>
+                    </a>
+                    <% } %>
+
+                        <% if (currentPage < totalPages) { %>
+                            <a href="/search?term=<%= term %>&page=<%= currentPage + 1 %>" class="page-link">Next</a>
+                            <a href="/search?term=<%= term %>&page=<%= totalPages %>" class="page-link">Last</a>
+                            <% } %>
+    </div>
+    </div>
+    <div class="daily-quote">
+        <h2 id="quote-heading">Quote of the Day</h2>
+        <p id="quote-text">Loading...</p>
+        <p id="quote-author"></p>
+    </div>
+
+<!-- Add script to fetch and display the quote of the day -->
+<!-- <script>
+    // Fetch the quote of the day from the API
+    
+</script> -->
+<!-- Include footer -->
+<%- include('include/_footer') %>

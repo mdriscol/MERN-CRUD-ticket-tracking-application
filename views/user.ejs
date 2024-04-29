@@ -1,0 +1,96 @@
+<%- include('include/_header') %>
+
+<form action="/api/users" method="POST" id="add_user">
+    <!-- form fields go here -->
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard</title>
+      
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="index.js"></script>
+    </head>
+
+    <div class="container">
+        
+        <p class="centered-text-title">Technical Support Team</p>
+        <p class="centered-text-small">Add the support team member here; they will be listed in the AssignTo drop-down field. 
+            <br>Upon submission, all Technical Support Team members will receive an email notification with a template containing the details of the request.</p>
+        <form id="add_user" method="POST" action="/api/users">
+            <div class="input-row">
+                <input type="text" name="userID" placeholder="userID">
+                <input type="text" name="fullName" placeholder="Full Name">
+                <input type="text" name="position" placeholder="Position">
+                <input type="text" name="title" placeholder="Title">
+                <input type="text" name="isAdmin" placeholder="Is Admin">
+                <input type="text" name="username" placeholder="Username">
+                <input type="text" name="email" placeholder="Email">
+                <button type="button" onclick="submitForm()">Add User</button>
+            </div>
+        </form>
+        <hr class="divider">
+        <div class="user-info">
+
+            <table class="user-table">
+                <thead>
+                    <tr>
+                        <th>userID</th>
+                        <th>Full Name</th>
+                        <th>Position</th>
+                        <th>Title</th>
+                        <th>Is Admin</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach((user)=> { %>
+                        <tr>
+                            <td>
+                                <%= user.userID %>
+                            </td>
+                            <td>
+                                <%= user.fullName %>
+                            </td>
+                            <td>
+                                <%= user.position %>
+                            </td>
+                            <td>
+                                <%= user.title %>
+                            </td>
+
+                            <td>
+                                <%= user.isAdmin==='Yes' ? 'Yes' : 'No' %>
+                            </td>
+                            <td>
+                                <%= user.username %>
+                            </td>
+                            <td>
+                                <%= user.email %>
+                            </td>
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
+        </div>
+        
+    <div id="graphicmain" style="display: flex; justify-content: center; align-items: center; height: 70vh;">
+        <iframe
+            style="background: #21313C;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);width: 100%; max-width: 1000px; height: 100%;margin-top: 20px;"
+            src="https://charts.mongodb.com/charts-imt-ayjnx/embed/dashboards?id=64a43ad4-0ef2-44ff-8473-2a911a75ec66&theme=dark&autoRefresh=true&maxDataAge=3600&showTitleAndDesc=false&scalingWidth=fixed&scalingHeight=fixed"></iframe>
+    
+    </div>
+    
+    
+    </div>
+    <div id="graphicmain" style="display: flex; justify-content: center; align-items: center; height: 70vh;">
+        <iframe
+            style="background: #21313C;border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);width: 100%; max-width: 1000px; height: 100%; margin-top: 20px;"
+            src="https://charts.mongodb.com/charts-imt-ayjnx/embed/dashboards?id=f6263088-b21d-4c99-aa76-cd2732ecdad8&theme=dark&autoRefresh=true&maxDataAge=3600&showTitleAndDesc=true&scalingWidth=fixed&scalingHeight=fixed"></iframe>
+    </div>
+    </div>
+
+</form>
+    <%- include('include/_footer') %>

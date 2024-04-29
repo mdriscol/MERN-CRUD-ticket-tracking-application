@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Ticket Submission</title>
+</head>
+
+<body>
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+        <h2 style="color: #333;">New Ticket Submission 32</h2>
+        <p>A new ticket has been submitted:</p>
+        <hr>
+        <p><strong>Ticket Details:</strong></p>
+        <ul>
+            <li><strong>Priority:</strong>
+                <%= request.priority %>
+
+            <li><strong>Submitter:</strong>
+                <%= request.submitter %>
+
+            <li><strong>AssignTo:</strong>
+                <%= request.assignTo %>
+
+            <li><strong>Status:</strong>
+                <%= request.status %>
+            </li>
+            <li><strong>Submitted By:</strong>
+                <%= request.submitter %>
+            </li>
+            <li><strong>Subject:</strong>
+                <%= request.subject %>
+            </li>
+            <li><strong>Details:</strong>
+                <%= request.details %>
+            </li>
+            <!-- Add more ticket details here as needed -->
+        </ul>
+        <p>Please take necessary action on this ticket.</p>
+        <p>Thank you,</p>
+        <p>Your Team</p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,207 @@
+<!-- include header -->
+<%- include('include/_header') %>
+<!-- Main Site -->
+<main id="site-main">
+    <div class="container">
+
+        <div class="home">
+            <a href="/" class="home-link"><i class="fas fa-home fa-2x"></i> Home/Tickets list</a>
+        </div>
+
+        <div class="form-title text-center">
+            <h2 class="text-dark" style="font-size: 24px;">Update Request</h2>
+            <span class="text-light">Use this form to update an existing request</span>
+        </div>
+        <!-- add user form -->
+        <!-- form handling -->
+        <form method="/api/requests" POST" id="update_request">
+            <div class="centered">
+                <table>
+                    <tr>
+                        <td>Ticket ID: <%= request._id %>
+                        </td>
+                        <td>Open Date: <%= new Date(request.openDate).toLocaleString('en-US') %>
+                        </td>
+                        <td>Modified Date: <%= new Date(request.modifiedDate).toLocaleString('en-US') %>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="update_request">
+                <div class="form-group" style="margin-top:10px;">
+                    <div class="wrap-status">
+                        <label for="status" class="text-dark">Status:</label>
+                        <div class="radio inline">
+                            <input id="radio-4" type="radio" name="status" value="Open" <% if (request.status==='Open' )
+                                { %>checked<% } %>>
+                                <label for="radio-4" class="radio-label">Open</label>
+                        </div>
+                        <div class="radio inline">
+                            <input id="radio-5" type="radio" name="status" value="Pending" <% if
+                                (request.status==='Pending' ) { %>checked<% } %>>
+                                <label for="radio-5" class="radio-label">Pending</label>
+                        </div>
+                        <div class="radio inline">
+                            <input id="radio-6" type="radio" name="status" value="Resolved or Closed" <% if
+                                (request.status==='Resolved or Closed' ) { %>checked<% } %>>
+                                <label for="radio-6" class="radio-label">Resolved or Closed</label>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="form-group" style="margin-top: 10px;">
+                    <label for="submitter" class="text-dark" style="width: 120px;">CreatedBy:</label>
+                    <input type="text" id="submitter" name="submitter" value="<%= request.submitter %>"
+                        style="width: 300px; height: 30px;">
+                </div>
+
+                <div class="form-group">
+                    <label for="subject" class="text-dark" style="width: 120px;">Subject:</label>
+                    <input id="subject" type="text" name="subject" value="<%= request.subject %>"
+                        style="width: 300px;height:30px">
+                </div>
+
+                <div class="form-group">
+                    <label for="submitter" class="text-dark" style="width: 120px;">Type:</label>
+                    <select id="type" name="type" required>
+                        <option value="Issue" <% if (request.type==='Issue' ) { %>selected<% } %>>Issue</option>
+                        <option value="Request" <% if (request.type==='Request' ) { %>selected<% } %>>Request</option>
+                        <option value="Incident" <% if (request.type==='Incident' ) { %>selected<% } %>>Incident
+                        </option>
+                    </select>
+                </div>
+
+
+                <div class="form-group" style="margin-top: 10px;">
+                    <label for="url" class="text-dark">URL:</label>
+                    <input type="text" id="url" name="url" value="<%= request.url %>"
+                        style="width: 300px; height: 30px;">
+                </div>
+
+                <div class="form-group" style="margin-top:10px;">
+                    <label for="priority" class="text-dark">Priority:</label>
+                    <select id="priority" name="priority" style="width: 300px; height: 30px;">
+                        <option value="High" <% if (request.priority==='High' ) { %>selected<% } %>>High</option>
+                        <option value="Medium" <% if (request.priority==='Medium' ) { %>selected<% } %>>Medium</option>
+                        <option value="Low" <% if (request.priority==='Low' ) { %>selected<% } %>>Low</option>
+                    </select>
+                </div>
+
+                <div class="form-group" style="margin-top:10px;">
+                    <label for="issueType" class="text-dark">Issue Type:</label>
+                    <select id="issueType" name="issueType" style="width: 300px; height: 30px;">
+                        <option value="Moodle" <% if (request.issueType==='Moodle' ) { %>selected<% } %>>Moodle</option>
+                        <option value="WebEex" <% if (request.issueType==='WebEex' ) { %>selected<% } %>>WebEex</option>
+                        <option value="Account" <% if (request.issueType==='Account' ) { %>selected<% } %>>Account
+                        </option>
+                        <option value="Moodle-Gradebook" <% if (request.issueType==='Moodle-Gradebook' ) { %>selected<%
+                                } %>
+                                >Moodle-Gradebook</option>
+                        <option value="Email" <% if (request.issueType==='Email' ) { %>selected<% } %>>Email</option>
+                        <option value="Panopto" <% if (request.issueType==='Panopto' ) { %>selected<% } %>>Panopto
+                        </option>
+                        <option value="Respondus Lockdown Browser" <% if
+                            (request.issueType==='Respondus Lockdown Browser' ) { %>
+                            selected<% } %>>Respondus Lockdown Browser</option>
+                        <option value="Other" <% if (request.issueType==='Other' ) { %>selected<% } %>>Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group" style="margin-top: 10px;">
+                    <label for="issueFrom" class="text-dark">Issue From:</label>
+                    <select id="issueFrom" name="issueFrom" style="width: 300px; height: 30px;">
+                        <option value="Student" <% if (request.issueFrom==='Student' ) { %>selected<% } %>>Student
+                        </option>
+                        <option value="Faculty" <% if (request.issueFrom==='Faculty' ) { %>selected<% } %>>Faculty
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-group" style="margin-top:10px;">
+                    <label for="location" class="text-dark">Location:</label>
+                    <select id="location" name="location" style="width: 300px; height: 30px;">
+                        <option value="at E230-Lab" <% if (request.location==='at E230-Lab' ) { %>selected<% } %>>E-230
+                                Lab</option>
+                        <option value="Phone" <% if (request.location==='Phone' ) { %>selected<% } %>>Phone</option>
+                        <option value="Email" <% if (request.location==='Email' ) { %>selected<% } %>>Email</option>
+                        <option value="Virtual lab" <% if (request.location==='Virtual lab' ) { %>selected<% } %>
+                                >Virtual Lab</option>
+                    </select>
+                </div>
+
+                <div class="form-group" style="margin-top: 10px;">
+                    <label for="name" class="text-dark">Full Name:</label>
+                    <input type="hidden" name="id" value="<%= request._id %>">
+                    <input type="text" id="name" name="name" value="<%= request.name %>"
+                        style="width: 300px; height: 30px;" placeholder="First Name + Last Name">
+                </div>
+
+
+                <div class="form-group" style="margin-top: 10px;">
+                    <label for="email" class="text-dark">Email:</label>
+                    <input type="text" id="email" name="email" value="<%= request.email %>"
+                        style="width: 300px; height: 30px;" placeholder="example@bhcc.edu">
+                </div>
+                <div class="form-group" style="margin-top: 10px;">
+                    <label for="impactedCourses" class="text-dark">Impacted Courses:</label>
+                    <input type="text" id="impactedCourses" name="impactedCourses"
+                        value="<%= request.impactedCourses %>" style="width: 300px; height: 30px;"
+                        placeholder="Impacted Courses">
+                </div>
+
+                <div class="form-group" style="margin-top: 10px;">
+                    <label for="userDevice" class="text-dark">User Device:</label>
+                    <input type="text" id="userDevice" name="userDevice" value="<%= request.userDevice %>"
+                        style="width: 300px; height: 30px;" placeholder="User Device">
+                </div>
+
+                <div class="form-group" style="margin-top: 10px;">
+                    <label for="operatingSystem" class="text-dark">Operating System:</label>
+                    <input type="text" id="operatingSystem" name="operatingSystem"
+                        value="<%= request.operatingSystem %>" style="width: 300px; height: 30px;"
+                        placeholder="Operating System">
+                </div>
+
+                <div class="form-group" style="margin-top: 10px;">
+                    <label for="details" class="text-dark">Details:</label>
+                    <textarea id="details" name="details" rows="15" cols="80"
+                        placeholder="Enter details here. A timestamp will be added automatically."><%= request.details %></textarea>
+                </div>
+
+                <div class="form-group" style="margin-top: 10px;">
+
+                    <label for="assignTo" class="text-dark">Assign To:</label>
+                    <select id="assignTo" name="assignTo" style="margin-top: 10px; width: 300px; height: 50px;">
+                    </select>
+
+                    <!-- Hidden input to store the selected user -->
+                    <input type="hidden" id="selectedUser" name="selectedUser" value="<%= request.assignTo %>">
+                </div>
+                <!-- add even listener script
+     -->
+
+                <div class="form-group" style="margin-top: 10px;">
+                    <label for="solution" class="text-dark">Solution:</label>
+                    <p></p>
+                    <textarea id="solution" name="solution" rows="5" cols="80"
+                        placeholder="Please provide details of the solution here."><%= request.solution %></textarea>
+                </div>
+
+
+                <div class="form-group" style="margin-top: 30px; display: flex; justify-content: center;">
+                    <button type="submit" class="btn update button" onclick="redirectToMainPage()">Save</button>
+                </div>
+
+
+            </div>
+        </form>
+
+
+
+</main>
+
+
+<!-- include footer -->
+<%- include('include/_footer') %>

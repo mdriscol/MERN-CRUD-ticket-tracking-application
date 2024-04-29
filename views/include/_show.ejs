@@ -1,0 +1,30 @@
+<% for(var i=0; i < requests.length; i++) { %>
+    <tr>
+        <td>
+            <%= requests[i].status %>
+        </td>
+        <!-- <td><%= requests[i].openDate.toLocaleDateString() %></td> -->
+        <td>
+            <%= new Date(requests[i].openDate).toLocaleDateString('en-US', {timeZone: 'UTC' }) %>
+        </td>
+        <td>
+            <%= requests[i].priority %>
+        </td>
+        <td class="subject-cell">
+            <a href="/update-request?id=<%= requests[i]._id %>" data-subject="<%= requests[i].subject %>">
+                <%= requests[i].subject %>
+            </a>
+        </td>
+        <td>
+            <%= requests[i].issueType %>
+        </td>
+        <td>
+            <%= requests[i].submitter %>
+        </td>
+        <td>
+            <a class="btn delete" data-id=<%=requests[i]._id%>>
+                <span class="text-gradient"><i class="fas fa-trash-alt"></i></span>
+            </a>
+        </td>
+    </tr>
+    <% } %>

@@ -1,0 +1,174 @@
+<!-- form handling-->
+<form method="POST" id="add_request">
+    <form action="/add-request" method="POST" id="add_request">
+
+        <div class="new_request">
+            <div class="form-group" style="margin-top:10px;">
+                <div class="wrap-status">
+                    <label for="status" class="text-dark">Status:</label>
+                    <div class="radio inline">
+                        <input type="radio" id="radio-4" name="status" value="Open">
+                        <label for="radio-4" class="radio-label">Open</label>
+                    </div>
+                    <div class="radio inline">
+                        <input type="radio" id="radio-5" name="status" value="Pending">
+                        <label for="radio-5" class="radio-label">Pending</label>
+                    </div>
+                    <div class="radio inline">
+                        <input type="radio" id="radio-6" name="status" value="Resolved or Closed">
+                        <label for="radio-6" class="radio-label">Resolved or Closed</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:10px;">
+                <label for="openDate" class="text-dark" style="width: 100px;">Open Date:</label>
+                <input type="date" name="openDate" id="openDate" value="<%= new Date().toISOString().split('T')[0] %>"
+                    style="width: 300px; height:30px">
+            </div>
+
+
+            <div class="form-group" style="margin-top: 10px;">
+                <label for="submitter" class="text-dark" style="width: 120px;">CreatedBy:</label>
+                <input type="text" id="submitter" name="submitter" value="" style="width: 300px; height: 30px;">
+            </div>
+
+
+            <div class="form-group" style="margin-top: 10px;">
+                <label for="subject" class="text-dark" style="width: 120px;">Subject:</label>
+                <input type="text" id="subject" name="subject" value="" style="width: 300px; height: 30px;"
+                    placeholder="Subject">
+            </div>
+
+
+            <div class="form-group" style="margin-top: 10px;">
+                <label for="submitter" class="text-dark" style="width: 120px;">Type:</label>
+                <select id="type" name="type" required>
+                    <option value="Issue">Issue</option>
+                    <option value="Request">Request</option>
+                    <option value="Incident">Incident</option>
+                </select>
+            </div>
+
+            <div class="form-group" style="margin-top: 10px;">
+                <label for="url" class="text-dark">URL:</label>
+                <input type="text" id="url" name="url" value="" style="width: 300px; height: 30px;" placeholder="URL">
+
+            </div>
+            <div class="form-group" style="margin-top:10px;">
+                <label for="priority" class="text-dark">Priority:</label>
+                <select id="priority" name="priority" style="width: 300px; height: 30px;">
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+            </div>
+
+            <div class="form-group" style="margin-top:10px;">
+                <label for="issueType" class="text-dark">Issue Type:</label>
+                <select id="issueType" name="issueType" style="width: 300px; height: 30px;">
+                    <option value="Moodle">Moodle</option>
+                    <option value="WebEex">WebEex</option>
+                    <option value="Account">Account</option>
+                    <option value="Moodle-Gradebook">Moodle-Gradebook</option>
+                    <option value="Email">Email</option>
+                    <option value="Panopto">Panopto</option>
+                    <option value="Respondus Lockdown Browser">Respondus Lockdown Browser</option>
+                    <option value="Other">other</option>
+                </select>
+            </div>
+
+            <div class="form-group" style="margin-top: 10px;">
+                <label for="issueFrom" class="text-dark">Issue From:</label>
+                <select id="issueFrom" name="issueFrom" style="width: 300px; height: 30px;">
+                    <option value="Student">Student</option>
+                    <option value="Faculty">Faculty</option>
+                </select>
+            </div>
+
+            <div class="form-group" style="margin-top:10px;">
+                <label for="location" class="text-dark">Location:</label>
+                <select id="location" name="location" style="width: 300px; height: 30px;">
+                    <option value="E230-Lab">E-230 Lab</option>
+                    <option value="Phone">Phone</option>
+                    <option value="Email">Email</option>
+                    <option value="Virtual lab">Virtual Lab</option>
+                </select>
+            </div>
+
+            <div class="form-group" style="margin-top: 10px;">
+                <label for="name" class="text-dark">Full Name:</label>
+                <input type="text" id="name" name="name" value="" style="width: 300px; height: 30px;"
+                    placeholder="First Name + Last Name">
+            </div>
+
+
+            <div class="form-group" style="margin-top: 10px;">
+                <label for="email" class="text-dark">Email:</label>
+                <input type="text" id="email" name="email" value="" style="width: 300px; height: 30px;"
+                    placeholder="example@bhcc.edu">
+            </div>
+            <div class="form-group" style="margin-top: 10px;">
+                <label for="impactedCourses" class="text-dark">Impacted Courses:</label>
+                <input type="text" id="impactedCourses" name="impactedCourses" value=""
+                    style="width: 300px; height: 30px;" placeholder="Impacted Courses">
+            </div>
+
+            <div class="form-group" style="margin-top: 10px;">
+                <label for="userDevice" class="text-dark">User Device:</label>
+                <input type="text" id="userDevice" name="userDevice" value="" style="width: 300px; height: 30px;"
+                    placeholder="User Device">
+            </div>
+
+            <div class="form-group" style="margin-top: 10px;">
+                <label for="operatingSystem" class="text-dark">Operating System:</label>
+                <input type="text" id="operatingSystem" name="operatingSystem" value=""
+                    style="width: 300px; height: 30px;" placeholder="Operating System">
+            </div>
+
+
+            <div class="form-group" style="margin-top:10px;">
+                <label for="details" class="text-dark">Provide the issue in Detail:</label>
+                <p></p>
+                <textarea id="details" name="details" rows="5" cols="80"
+                    placeholder="Enter details here. A timestamp will be added automatically."></textarea>
+            </div>
+
+            <div class="form-group" style="margin-top: 10px;">
+
+                <label for="assignTo" class="text-dark">Assign To:</label>
+                <select id="assignTo" name="assignTo" style="margin-top: 10px; width: 300px; height: 50px;">
+                    <!-- Use EJS to populate the options from the users data -->
+                    <% users.forEach(user=> { %>
+                        <option value="<%= user.fullName + ' (' + user.email + ')' %>">
+                            <%= user.fullName + ' (' + user.email + ')' %>
+                        </option> <!-- To save name + email -->
+                        <% }); %>
+                </select>
+            </div>
+            <!-- 
+        <script>
+            axios.get("http://localhost:3000/api/users")
+                .then(function (response) {
+                    selectElement.appendChild(option);
+                })
+                .catch(function (error) {
+                    console.error(error);
+                });
+        </script> -->
+
+
+            <div class="form-group" style="margin-top: 10px;">
+                <label for="solution" class="text-dark">Solution:</label>
+                <textarea id="solution" name="solution" rows="5" cols="80"
+                    placeholder="Please provide details of the solution here."></textarea>></textarea>
+            </div>
+
+            <div class="form-group" style="margin-top: 30px; display: flex; justify-content: center;">
+                <button type="submit" class="btn update button">Enter to submit</button>
+            </div>
+        </div>
+
+
+
+    </form>

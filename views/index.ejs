@@ -1,0 +1,93 @@
+<!-- include header -->
+<%- include('include/_header') %>
+
+    <!-- Main site -->
+    <main id="site-main">
+        <div class="container">
+            <div class="search-box">
+                <h1 class="intro-title">How are we doing today?</h1>
+            <div class="form-container">
+                <form class="hc-search-form" action="/search" id="hc-search-form">
+                    <div class="hc-search-input">
+                        <input placeholder="Enter your search term here..." type="text" name="term" id="support-search-input">
+                        <i class="mobile-icon-search hide-tablet"></i>
+                    </div>
+                    <div class="hc-search-button">
+                        <button class="btn btn-primary" type="submit">
+                            <span>Search</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+                
+            </div>
+        </div>
+                     
+                   
+            
+        
+
+            <!-- Table to display your data -->
+            <!-- form-wrap -->
+            <div class="form-wrapper">
+            <form action="/" method="POST">
+              
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <!-- <th>ID</th> -->
+                            <th>Status</th>
+                            <th>OpenDate</th>
+                            <th>Priority</th>
+                            <th>Subject</th>
+                            <th>Issue Type</th>
+                            <th>CreatedBy</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Include code to display your data here -->
+                        <%- include('include/_show') %>
+                                              
+                    </tbody>
+                </table>
+            </form>
+        </div>
+
+            <!-- Pagination Controls -->
+            <div class="pagination">
+                <% if (currentPage> 1) { %>
+                <a href="/?page=1" class="page-link">First</a>
+                <a href="?page=<%= currentPage - 1 %>" class="page-link">Previous</a>
+            <% } %>
+
+                <% for (let i=1; i <=totalPages; i++) { %>
+                <a href="?page=<%= i %>" class="page-link<%= currentPage === i ? ' active' : '' %>">
+            <%= i %>
+                </a>
+                <% } %>
+
+                <% if (currentPage < totalPages) { %>
+                <a href="?page=<%= currentPage + 1 %>" class="page-link">Next</a>
+                <a href="?page=<%= totalPages %>" class="page-link">Last</a>
+                <% } %>
+            </div>
+            <div>
+                
+            </div>
+                
+                    <div class="daily-quote">
+                        <h2 id="quote-heading">Quote of the Day</h2>
+                        <p id="quote-text">Loading...</p>
+                        <p id="quote-author"></p>
+                    </div>
+
+                    <!-- Add script to fetch and display the quote of the day -->
+                    <!-- add addEventListener script quote  -->
+                    
+                    
+            
+    </main>
+
+    <!-- Include footer -->
+    <%- include('include/_footer') %>
