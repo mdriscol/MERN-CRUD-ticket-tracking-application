@@ -1,11 +1,10 @@
-
 $("#add_request").submit(function (event) {
   event.preventDefault();
 
   var data = $(this).serialize();
 
   var request = {
-    url: `http://localhost:3000/add-request`,
+    url: `/add-request`,
     method: "POST",
     data: data,
   };
@@ -13,13 +12,12 @@ $("#add_request").submit(function (event) {
   $.ajax(request)
     .done(function (response) {
       alert("Request added Successfully!");
-      window.location.href = "http://localhost:3000/"; // Redirect to home page
+      window.location.href = "/"; // Redirect to home page
     })
     .fail(function (jqXHR, textStatus, errorThrown) {
       console.error("AJAX request failed: ", textStatus, errorThrown);
     });
 });
-
 
 $("#update_request").submit(function (event) {
   alert("Data updated Successfully!");
@@ -36,7 +34,7 @@ $("#update_request").submit(function (event) {
   data["assignTo"] = selectedUsers;
  
   var request = {
-    url: `http://localhost:3000/api/requests/${data.id}`,
+    url: `/api/requests/${data.id}`,
     method: "PUT",
     data: data,
   };
@@ -50,11 +48,9 @@ $("#update_request").submit(function (event) {
     setTimeout(function () {
       $("#successMessage").hide();
     }, 4000);
-    window.location.href = "http://localhost:3000/"; 
+    window.location.href = "/"; 
   });
 });
-
-
 
 if (window.location.pathname == "/") {
   $ondelete = $(".table tbody td a.delete");
@@ -62,7 +58,7 @@ if (window.location.pathname == "/") {
     var id = $(this).attr("data-id");
 
     var request = {
-      url: `http://localhost:3000/api/requests/${id}`,
+      url: `/api/requests/${id}`,
       method: "DELETE",
     };
 
@@ -74,7 +70,6 @@ if (window.location.pathname == "/") {
     }
   });
 }
-
 
 // add user
 
@@ -99,4 +94,3 @@ function submitForm() {
     }
   });
 }
-
