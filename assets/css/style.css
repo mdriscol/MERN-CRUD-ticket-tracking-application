@@ -698,4 +698,23 @@ table{
     
     
 }
+/* Mobile devices (landscape) ----------- */
+@media only screen 
+and (min-device-width: 390px) 
+and (max-device-width: 844px) 
+and (-webkit-min-device-pixel-ratio: 2) {
+
+    .hc-search-input {
+        width: 70%; /* Adjust this value as needed */
+    }
+
+    .hc-search-button {
+        width: 30%; /* Adjust this value as needed */
+    }
+
+    /* Add some space between the input and the button */
+    .hc-search-input, .hc-search-button {
+        margin: 5px 0;
+    }
+}
 
