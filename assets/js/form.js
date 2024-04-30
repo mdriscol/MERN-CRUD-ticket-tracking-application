@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 // add assignTo user dropdwon script
 document.addEventListener("DOMContentLoaded", (event) => {
   axios
-    .get("http://localhost:3000/api/users")
+    .get("/api/users")
     .then(function (response) {
       const selectElement = document.getElementById("assignTo");
       const selectedUser = document.getElementById("selectedUser").value;
