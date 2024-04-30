@@ -1,7 +1,7 @@
 // _form.ejs
 document.addEventListener("DOMContentLoaded", (event) => {
   axios
-    .get("http://localhost:3000/api/users")
+    .get("/api/users")
     .then(function (response) {
       selectElement.appendChild(option);
     })
