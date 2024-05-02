@@ -625,7 +625,11 @@ table{
   background-color: #f98012;
 }
 
-
+.footer-container__wrapper > * {
+    width: 150%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
 
 @media screen and (max-width: 320px) {
     /* Styles for small phones */
